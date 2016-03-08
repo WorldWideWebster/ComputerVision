@@ -3,12 +3,14 @@
 #include <stdio.h>
 #include <string.h>
 
-void SWAP(float a, float b)
+void SWAP(void *a, void *b)
 {
-	float tempr = a;
-	(a)=(b);
-	(b)=tempr;
+	void *tempr = a;
+	a=b;
+	b=tempr;
 }
+
+static char test[512][512];
 
 /*------------------------------------------------------------------
 
@@ -23,15 +25,18 @@ void four1(float *data, int nn, int isign, int isComplex)
         int n,mmax,m,j,istep,i;
         double wtemp,wr,wpr,wpi,wi,theta;
         float tempr,tempi;							// Temp real, temp imaginary
-        if(!isComplex) n=nn << 1;									// Multiply nn by 2, for complex
+        if(!isComplex) 
+			n=nn << 1;									// Multiply nn by 2, for complex
+		else 
+			n=nn;
 		j=1;
 		// Bit reversal
 		for (i=1;i<n;i+=2) 
 		{
 				if (j > i) 
 				{
-						SWAP(data[j],data[i]);
-						SWAP(data[j+1],data[i+1]);
+						SWAP(&data[j],&data[i]);
+						SWAP(&data[j+1],&data[i+1]);
 				}
 				m=n >> 1;
 				while (m >= 2 && j > m) 
@@ -56,8 +61,9 @@ void four1(float *data, int nn, int isign, int isComplex)
 				{
 						for (i=m;i<=n;i+=istep) 
 						{
+							printf("%u %f %f \n", j, data[j], data[j+1]);
 								j=i+mmax;
-								tempr=wr*data[j]-wi*data[j+1];
+								tempr=wr*data[j]-wi* data[j+1];
 								tempi=wr*data[j+1]+wi*data[j];
 								data[j]=data[i]-tempr;
 								data[j+1]=data[i+1]-tempi;
@@ -82,64 +88,15 @@ void four1(float *data, int nn, int isign, int isComplex)
 
 /*-------------------------------------------------------------------------
  
-
-int FFT2D(float **data,int nx,int ny,int isign)
-{
-   int i,j;
-   double *real,*imag;
-
-   // Transform the rows 
-   real = (double *)malloc(nx * sizeof(double));
-   imag = (double *)malloc(nx * sizeof(double));
-
-   for (j=0;j<ny;j++) {
-      for (i=0;i<nx;i++) {
-		if(j % 2 == 0)
-			real[i] = data[i][j];
-		else
-			imag[i] = data[i][j];
-      }
-      four1(&data, nx, isign);
-      for (i=0;i<nx;i++) {
-		  if(j % 2 == 0)
-			data[i][j] = real[i];
-		  else
-			data[i][j] = imag[i];
-      }
-   }
-   free(real);
-   free(imag);
-
-   // Transform the columns 
-   real = (double *)malloc(ny * sizeof(double));
-   imag = (double *)malloc(ny * sizeof(double));
-
-   for (i=0;i<nx;i++) {
-      for (j=0;j<ny;j++) {
-		if(j % 2 == 0)
-			real[i] = data[i][j];
-		else
-			imag[i] = data[i][j];
-      }
-      four1(&data, ny, isign);
-      for (j=0;j<ny;j++) {
-		  if(j % 2 == 0)
-			data[i][j] = real[i];
-		  else
-			data[i][j] = imag[i];
-      }
-   }
-   free(real);
-   free(imag);
-}*/
-
-void four2(unsigned char ***data,int nx,int ny,int isign)
+-------------------------------------------------------------------------*/
+void four2(unsigned char ***data, int nx, int ny,int isign)
 {
 	int i;
 
 	for (i=0;i<ny;i++) 
 	{
-		four1((float*)data[i], nx, isign, 1);
+		//four1((float*)test[i], nx, isign, 0);
+		four1((float*)data[i]-1, nx*2, isign, 0);
 	}
 
 }
@@ -152,10 +109,10 @@ void ReadIntoArray(char *fn,int xsize, int ysize, unsigned char ***data_ptr)
     
     // Declare data as a 2D pointer array
     unsigned char **data;
-    data =  malloc(sizeof(unsigned char *) * ysize);
+    data = (unsigned char **) malloc(sizeof(unsigned char *) * ysize*2);
     for(i = 0; i < ysize; i++)
     {
-		data[i] =  malloc(sizeof(unsigned char) * xsize);
+		data[i] = (unsigned char *)  malloc(sizeof(unsigned char) * xsize*2);
 	}
 	
 	// Read image contents into 2D array
@@ -166,6 +123,7 @@ void ReadIntoArray(char *fn,int xsize, int ysize, unsigned char ***data_ptr)
 		{
 			fread(&pixel, sizeof(char), 1, fp_inp);
 			data[j][k] = pixel;
+			test[j][k] = pixel;
 		}
 	}   
 	
@@ -194,6 +152,7 @@ void WriteIntoArray(char *fn, char* out, int xsize, int ysize, unsigned char ***
 int main()
 {
 	unsigned char **data;
+
 	
 	// Image mri = ImageInit("mri", 256, 256);
 
@@ -202,7 +161,7 @@ int main()
 	//unsigned char **spectrum = data;
 
 	/* call the FFT routine; note the 1-0ffset for num recipes */
-	four2(&data, 255, 255, 1);
+	four2(&data, 256, 256, 1);
 
 	WriteIntoArray("mri", "_four", 256, 256, &data);
 	
