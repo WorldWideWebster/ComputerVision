@@ -1,0 +1,10 @@
+﻿  filtering.c
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(63): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(99): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(232): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(252): warning C4101: 'xcount': unreferenced local variable
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(252): warning C4101: 'ycount': unreferenced local variable
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(319): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(320): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  CVTest.vcxproj -> C:\Users\Sean\OneDrive\SchoolWork\ComputerVision\CVTest\Debug\CVTest.exe
