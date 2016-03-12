@@ -71,7 +71,7 @@ int main()
 
 	//Butterworth(filter, real, imag, xsize, ysize, 1);
 
-	//WriteIntoArray("mri", "_spectrum", 256, 256, spectrum);
+	WriteIntoArray("mri", "_spectrum", 256, 256, spectrum);
 	four2(spectrum, 256, 256, -1, real, imag);
 	WriteIntoArray("mri", "_ispectrum", 256, 256, spectrum);
 	// Take inverse of filtered image
