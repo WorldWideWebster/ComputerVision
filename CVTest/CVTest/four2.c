@@ -65,7 +65,7 @@ int main()
 	{
 		for (j = 0; j < xsize; j++)
 		{
-			filter[i][j] = (float)spectrum[i][j];
+			filter[i][j] = spectrum[i][j];
 		}
 	}
 

@@ -140,7 +140,11 @@ Inputs:
 -------------------------------------------------------------------------*/
 void Four2Row(float **data, int xsize, int ysize, int isign)
 {
-	int xcount, ycount;
+	int xcount, ycount, signMod;
+	if (isign > 0)
+		signMod = 2;
+	else
+		signMod = 1;
 	// FFT of rows
 	float *horzLine;			// Each row to be transformed
 	horzLine = malloc(sizeof(float)*xsize * 2);
@@ -150,9 +154,9 @@ void Four2Row(float **data, int xsize, int ysize, int isign)
 		{
 			horzLine[xcount] = 0;
 		}
-		for (xcount = 0; xcount < xsize * 2; xcount += 2)
+		for (xcount = 0; xcount < xsize * 2; xcount += signMod)
 		{
-			horzLine[xcount] = data[ycount][xcount / 2];
+			horzLine[xcount] = data[ycount][xcount / signMod];
 		}
 
 		four1(horzLine - 1, xsize, isign);
@@ -161,6 +165,28 @@ void Four2Row(float **data, int xsize, int ysize, int isign)
 		{
 			data[ycount][xcount] = horzLine[xcount];
 		}
+	}
+}
+/*-------------------- GetRealImag()-------------------------------------
+
+PURPOSE
+Fills real and imag arrays
+
+Inputs:
+-data:	2D array to be input
+-xsize:	number of pixels in x direction
+-ysize: number of pixels in y direction
+-real:	2D array to hold real component of 2DFFT
+-imag:	2D array to hold imaginary component of 2DFFT
+-------------------------------------------------------------------------*/
+void GetRealImag(float **data, float **real, float **imag, int xsize, int ysize)
+{
+	int xcount, ycount;
+	for (ycount = 0; ycount < ysize; ycount++)
+	{
+		for(xcount = 0; xcount < xsize * 2; xcount+=2)
+		real[ycount][xcount/2] = data[ycount][xcount];
+		imag[ycount][xcount/2] = data[ycount][xcount + 1];
 	}
 }
 
@@ -180,10 +206,14 @@ Inputs:
 void Four2Column(float **data, int xsize, int ysize, int isign, float **imag, float **real)
 {
 	// FFT of columns
-	int xcount, ycount;
+	int xcount, ycount, signMod;
+	if (isign > 0)
+		signMod = 1;
+	else
+		signMod = 2;
 	float *vertLine;
 	vertLine = malloc(sizeof(float)*ysize * 2);
-	for (xcount = 0; xcount < xsize; xcount++)
+	for (xcount = 0; xcount < xsize*signMod; xcount += signMod)
 	{
 		for (ycount = 0; ycount < ysize * 2; ycount++)
 		{
@@ -197,11 +227,6 @@ void Four2Column(float **data, int xsize, int ysize, int isign, float **imag, fl
 
 		four1(vertLine - 1, ysize, 1);
 
-		for (ycount = 0; ycount < ysize * 2; ycount += 2)
-		{
-			real[ycount / 2][xcount] = vertLine[ycount];
-			imag[ycount / 2][xcount] = vertLine[ycount + 1];
-		}
 		for (ycount = 0; ycount < ysize * 2; ycount++)
 		{
 			data[ycount][xcount] = vertLine[ycount];
@@ -250,29 +275,23 @@ Inputs:
 void four2(float **data, int xsize, int ysize, int isign, float **real, float **imag)
 {
 	int xcount, ycount;
-
-	if (isign < 0)
-	{
-		iFour2Prep(data, real, imag, xsize, ysize);
-	}
-	else
-	{
-		SpacialTransform(data, xsize, ysize);
-	}
-
 	// Forwards Transform
 	if (isign > 0)
 	{
+		SpacialTransform(data, xsize, ysize);
 		Four2Row(data, xsize, ysize, isign);
 		Four2Column(data, xsize, ysize, isign, imag, real);
+		GetRealImag(data, real, imag, xsize, ysize);
 		GetSpectrum(data, real, imag, xsize, ysize);
 		NormalizeArray(data, xsize, ysize);
 	}
-	// Reverse Transform
+	// Inverse Transform
 	else
 	{
+		iFour2Prep(data, real, imag, xsize, ysize);
 		Four2Column(data, xsize, ysize, isign, imag, real);
 		Four2Row(data, xsize, ysize, isign);
+		GetRealImag(data, real, imag, xsize, ysize);
 		SpacialTransform(real, xsize, ysize);
 		SpacialTransform(imag, xsize, ysize);
 		GetSpectrum(data, real, imag, xsize, ysize);
