@@ -2,10 +2,8 @@
 c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(63): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(99): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(209): warning C4101: 'yMod': unreferenced local variable
-c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(257): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
-c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(277): warning C4101: 'xcount': unreferenced local variable
-c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(277): warning C4101: 'ycount': unreferenced local variable
-c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(346): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(347): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(151): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(181): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(331): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(332): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   CVTest.vcxproj -> C:\Users\Sean\OneDrive\SchoolWork\ComputerVision\CVTest\Debug\CVTest.exe

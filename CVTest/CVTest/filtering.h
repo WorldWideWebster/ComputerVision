@@ -20,8 +20,6 @@ function prototypes for filtering.c
 void four1(float *data, int nn, int isign);
 void GetSpectrum(float **data, float **real, float **imag, int xsize, int ysize);
 void iFour2Prep(float **data, float **real, float **imag, int xsize, int ysize);
-void Four2Row(float **data, int xsize, int ysize, int isign);
-void Four2Column(float **data, int xsize, int ysize, int isign, float **imag, float **real);
 void SpacialTransform(float **data, int xsize, int ysize);
 void four2(float **data, int xsize, int ysize, int isign, float **real, float **imag);
 void Butterworth(float **data, float **real, float **imag, int xsize, int ysize, float power);
