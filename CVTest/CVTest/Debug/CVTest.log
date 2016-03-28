@@ -1,4 +1,6 @@
-﻿  filtering.c
+﻿  four2.c
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\four2.c(78): warning C4305: 'function': truncation from 'double' to 'float'
+  filtering.c
 c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(63): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(99): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -6,4 +8,9 @@ c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(151):
 c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(181): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
 c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(331): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\filtering.c(332): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  arrays.c
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\arrays.c(48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\arrays.c(72): warning C4098: 'ReadIntoArray': 'void' function returning a value
+c:\users\sean\onedrive\schoolwork\computervision\cvtest\cvtest\arrays.c(112): warning C4244: '=': conversion from 'float' to 'unsigned char', possible loss of data
+  Generating Code...
   CVTest.vcxproj -> C:\Users\Sean\OneDrive\SchoolWork\ComputerVision\CVTest\Debug\CVTest.exe

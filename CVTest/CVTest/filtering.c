@@ -330,6 +330,7 @@ void Butterworth(float **data, float **real, float **imag, int xsize, int ysize,
 		{
 			distPixel = sqrt(pow(i - ysize / 2, 2) + pow(j - xsize / 2, 2));
 			filter = 1 / (1 + pow(distPixel / cutoff, 2 * power));
+			bFilter[i][j] *= filter;
 		}
 	}
 	for (i = 0; i < ysize; i++)

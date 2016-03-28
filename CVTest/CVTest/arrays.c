@@ -69,7 +69,7 @@ void ReadIntoArray(char *fn, int xsize, int ysize, unsigned char **data)
 	FILE *fp_inp;
 	unsigned char pixel;
 	// Read image contents into 2D array
-	if ((fp_inp = fopen(fn, "rb")) == NULL) exit(0);
+	if ((fp_inp = fopen(fn, "rb")) == NULL) return -1;
 	for (j = 0; j < ysize; j++)
 	{
 		for (k = 0; k < xsize; k++)
