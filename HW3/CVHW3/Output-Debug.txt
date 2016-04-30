@@ -1,0 +1,17 @@
+﻿'CVHW3.exe' (Win32): Loaded 'C:\Users\Sean\OneDrive\SchoolWork\ComputerVision\HW3\CVHW3\Debug\CVHW3.exe'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\vcruntime140d.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbased.dll'. Cannot find or open the PDB file.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\advapi32.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sechost.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\sspicli.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\cryptbase.dll'. Symbols loaded.
+'CVHW3.exe' (Win32): Loaded 'C:\Windows\SysWOW64\bcryptprimitives.dll'. Symbols loaded.
+The thread 0x344 has exited with code 0 (0x0).
+The thread 0x2864 has exited with code 0 (0x0).
+The thread 0x3c5c has exited with code 0 (0x0).
+The program '[21272] CVHW3.exe' has exited with code 0 (0x0).
